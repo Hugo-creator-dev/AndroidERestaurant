@@ -3,6 +3,7 @@ package fr.isen.musoles.androiderestaurant
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import fr.isen.musoles.androiderestaurant.databinding.ActivityFoodBinding
+import fr.isen.musoles.androiderestaurant.model.food
 
 class FoodActivity : AppCompatActivity() {
     private lateinit var binding : ActivityFoodBinding
@@ -10,11 +11,10 @@ class FoodActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityFoodBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        /*val dish : DishModel = intent.getSerializableExtra(TITLE_DISH) as DishModel
-        binding.dishTitle.text = dish.title
-        binding.dishDescription.text = dish.description
-        binding.dishPrice.text = dish.price
-        binding.dishImage.setImageResource(dish.image)*/
-
+        val food : food = intent.getSerializableExtra(FOODTRANSFER) as food
+        binding.titlefood.text = food.title
+        binding.descfood.text = food.description
+        binding.pricefood.text = food.price.toString()
+        binding.imagefood.setImageResource(food.image)
     }
 }

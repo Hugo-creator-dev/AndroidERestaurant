@@ -8,6 +8,7 @@ import fr.isen.musoles.androiderestaurant.databinding.ActivityMenuBinding
 import fr.isen.musoles.androiderestaurant.model.food
 import fr.isen.musoles.androiderestaurant.model.price
 
+const val FOODTRANSFER :String = "myFood"
 class MenuActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMenuBinding
     private lateinit var typeOfEtape : ETAPE
@@ -28,7 +29,7 @@ class MenuActivity : AppCompatActivity() {
         food.add(food(R.drawable.abc_vector_test,"ouf","oui", price(5,DEVISE.EURO)))
         binding.recyclerView.adapter = FoodAdaptater(food) {
             val intent = Intent(this, FoodActivity::class.java).apply {
-                putExtra("title", it)
+                putExtra(FOODTRANSFER, it)
             }
             startActivity(intent)
         }
