@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AndroidERestaurant</string>
+    <string name="starter">Starter</string>
+    <string name="titleHome">Meet Eat Restaurante</string>
+    <string name="main">Main</string>
+    <string name="dessert">Dessert</string>
+</resources>
