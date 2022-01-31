@@ -11,19 +11,23 @@
         android:id="@+id/fragTitle"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="title" />
 
     <TextView
         android:id="@+id/fragPrice"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fragTitle"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="100€" />
 
     <ImageView
         android:id="@+id/fragImg"

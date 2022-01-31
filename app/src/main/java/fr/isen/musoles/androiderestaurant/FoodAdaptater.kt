@@ -18,8 +18,9 @@ class FoodAdaptater(private val dishes: List<food>, private val onFoodClick : (f
     }
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         val food = dishes[position]
-        if(food.images.isNotEmpty())
+        if(food.images[0].isNotEmpty()) {
             Picasso.with(holder.itemView.context).load(food.images[0]).into(holder.imageView)
+        }
         holder.textView.text = food.name_fr
         holder.priceView.text = food.prices[0].price.toString() + "€"
         holder.itemView.setOnClickListener {

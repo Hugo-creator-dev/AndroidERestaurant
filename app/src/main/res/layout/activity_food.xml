@@ -6,24 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".FoodActivity">
 
-    <ImageView
-        android:id="@+id/imagefood"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/productImage"
-        app:layout_constraintEnd_toEndOf="parent"
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/carouselView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:fillColor="#FFFFFFFF"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titlefood"
-        app:srcCompat="@drawable/ic_launcher_foreground"
-        tools:ignore="ImageContrastCheck" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:pageColor="#00000000"
+        app:radius="6dp"
+        app:slideInterval="3000"
+        app:strokeColor="#FF777777"
+        app:strokeWidth="1dp" />
 
     <TextView
         android:id="@+id/titlefood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/carouselView"
         tools:text="TItle" />
 
     <TextView
@@ -32,10 +38,40 @@
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagefood"
+        app:layout_constraintTop_toBottomOf="@+id/titlefood"
         tools:text="description" />
 
+    <Button
+        android:id="@+id/plus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/plus"
+        app:layout_constraintBottom_toTopOf="@+id/pricefood"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/totalfood"
+        app:layout_constraintTop_toBottomOf="@+id/descfood" />
+
+    <Button
+        android:id="@+id/less"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/moins"
+        app:layout_constraintBottom_toTopOf="@+id/pricefood"
+        app:layout_constraintEnd_toStartOf="@+id/totalfood"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descfood" />
+
     <TextView
+        android:id="@+id/totalfood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/pricefood"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descfood"
+        tools:text="5" />
+
+    <Button
         android:id="@+id/pricefood"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -43,5 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/descfood"
-        tools:text="10000€" />
+        tools:ignore="SpeakableTextPresentCheck"
+        tools:text="569€" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

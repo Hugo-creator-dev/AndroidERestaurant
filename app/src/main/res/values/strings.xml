@@ -5,4 +5,6 @@
     <string name="main">Main</string>
     <string name="dessert">Dessert</string>
     <string name="productImage">image du produit</string>
+    <string name="plus">plus</string>
+    <string name="moins">moins</string>
 </resources>
