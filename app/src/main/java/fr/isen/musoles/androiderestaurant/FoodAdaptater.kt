@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import fr.isen.musoles.androiderestaurant.databinding.ActivityFoodFragmentBinding
 import fr.isen.musoles.androiderestaurant.model.food
 
@@ -15,12 +16,12 @@ class FoodAdaptater(private val dishes: List<food>, private val onFoodClick : (f
         val view = ActivityFoodFragmentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return FoodViewHolder(view)
     }
-
     override fun onBindViewHolder(holder: FoodViewHolder, position: Int) {
         val food = dishes[position]
-        holder.imageView.setImageResource(food.image)
-        holder.textView.text = food.title
-        holder.priceView.text = food.price.toString()
+        if(food.images.isNotEmpty())
+            Picasso.with(holder.itemView.context).load(food.images[0]).into(holder.imageView)
+        holder.textView.text = food.name_fr
+        holder.priceView.text = food.prices[0].price.toString() + "€"
         holder.itemView.setOnClickListener {
             onFoodClick(food)
         }
