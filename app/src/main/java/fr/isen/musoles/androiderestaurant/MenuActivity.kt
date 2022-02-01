@@ -1,9 +1,7 @@
 package fr.isen.musoles.androiderestaurant
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
@@ -11,20 +9,20 @@ import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
 import fr.isen.musoles.androiderestaurant.databinding.ActivityMenuBinding
 import fr.isen.musoles.androiderestaurant.model.data
-import fr.isen.musoles.androiderestaurant.model.food
 import org.json.JSONObject
 
 
 
 
 const val FOODTRANSFER :String = "myFood"
-class MenuActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityMenuBinding
+class MenuActivity : ToolsBar() {
     private lateinit var typeOfEtape : ETAPE
+    private lateinit var binding : ActivityMenuBinding
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         binding = ActivityMenuBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        toolBar = binding.myToolbar
+        super.onCreate(savedInstanceState)
         typeOfEtape = intent.getSerializableExtra(TYPEOFETAPE) as ETAPE
         binding.titleMenu.setText( when(typeOfEtape) {
             ETAPE.MAIN -> R.string.main
@@ -59,7 +57,6 @@ class MenuActivity : AppCompatActivity() {
             }
         )
         Volley.newRequestQueue(this).add(jsonObjectRequest)
-
 
     }
 }

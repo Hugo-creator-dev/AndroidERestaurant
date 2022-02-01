@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/nbr"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/store"
+        android:icon="@android:drawable/btn_star_big_on"
+        android:title="@string/store"
+        app:showAsAction="always" />
+</menu>

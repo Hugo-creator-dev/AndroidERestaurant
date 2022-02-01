@@ -1,7 +1,12 @@
 package fr.isen.musoles.androiderestaurant
 
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.preference.Preference
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.Toast
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import fr.isen.musoles.androiderestaurant.databinding.ActivityFoodBinding
@@ -9,6 +14,7 @@ import fr.isen.musoles.androiderestaurant.model.food
 import fr.isen.musoles.androiderestaurant.model.shop
 import java.io.File
 import java.io.FileOutputStream
+import java.util.prefs.Preferences
 
 class FoodActivity : AppCompatActivity() {
     private lateinit var binding : ActivityFoodBinding
@@ -32,6 +38,7 @@ class FoodActivity : AppCompatActivity() {
         binding.plus.setOnClickListener { pluss() }
         binding.less.setOnClickListener { less() }
         binding.pricefood.setOnClickListener { save() }
+        setSupportActionBar(binding.myToolbar)
     }
 
     fun pluss()
@@ -64,7 +71,31 @@ class FoodActivity : AppCompatActivity() {
             all = Gson().fromJson(file.readText(),List::class.java) as List<shop>
         }
         all + shop
+
+        var pref = getSharedPreferences("info", 0)
+        var edit = pref.edit()
+        edit.putInt("nbr",pref.getInt("nbr",0) + shop.quantity)
+        edit.apply()
+
         file.writeText(Gson().toJson(all))
         finish()
+    }
+
+    override fun onResume() {
+        binding.myToolbar.menu.findItem(R.id.nbr)?.title = getSharedPreferences("info", 0).getInt("nbr",0).toString()
+        super.onResume()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main, menu)
+        menu.findItem(R.id.nbr)?.title = getSharedPreferences("info", 0).getInt("nbr",0).toString()
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.store -> Toast.makeText(this, "Search Clicked", Toast.LENGTH_SHORT).show()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

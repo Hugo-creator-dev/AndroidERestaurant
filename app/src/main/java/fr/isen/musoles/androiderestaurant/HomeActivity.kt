@@ -1,19 +1,19 @@
 package fr.isen.musoles.androiderestaurant
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import fr.isen.musoles.androiderestaurant.databinding.ActivityHomeBinding
+import fr.isen.musoles.androiderestaurant.databinding.ActivityMenuBinding
 
 const val TYPEOFETAPE :String = "typeofetape"
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : ToolsBar() {
     private lateinit var binding : ActivityHomeBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        toolBar = binding.myToolbar
+        super.onCreate(savedInstanceState)
 
         binding.starter.setOnClickListener {
             getMenu(ETAPE.STARTER)
@@ -24,6 +24,7 @@ class HomeActivity : AppCompatActivity() {
         binding.dessert.setOnClickListener {
             getMenu(ETAPE.DESSERT)
         }
+
     }
 
     private fun getMenu(type : ETAPE)
